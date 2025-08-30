@@ -1,0 +1,23 @@
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px black;
+}
+
+canvas {
+    background-color: #0f1220;
+}
+
+.score{
+    background-color: #0f1220;
+    color: rgb(67, 76, 126);
+    font-size: 3rem;
+    margin: 3rem;
+    padding: 1rem;
+}

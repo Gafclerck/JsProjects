@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>chrono</title>
+</head>
+<style>
+    body {
+        background-color: #f0f0f0;
+        height: 100vh;
+    }
+    .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chronoStroke1 {
+        border: 2px solid #000000;
+        background-color: black;
+        border-radius: 50%;
+        padding: 10px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .chronoFill {
+        background-color: #000000;
+        border: solid 5px rgb(255, 226, 226);
+        width: 160px;
+        height: 160px;
+        padding: 5px;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    .controls div {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    }
+
+    .controls div:hover {
+    background: #555;
+    }
+
+    .controls i {
+    font-size: 1.5rem;
+    color: white;
+    }
+
+</style>
+<body class="center" style="flex-direction: column; gap: 20px;">
+    <div class="chronoStroke1 center">
+        <div class="chronoFill center">
+            00:00:00:000
+        </div>
+    </div>
+    <div class="controls">
+        <div class="start"><i class="fa-solid fa-play"></i></div>
+        <div class="reset"><i class="fa-solid fa-rotate-right"></i></div>
+    </div>
+</body>
+<script>
+    let chrono = document.querySelector('.chronoFill');
+
+    let milliseconds = 0;
+    let seconds = 0;
+    let minutes = 0;
+    let hours = 0;
+    let isRunning = false;
+    let intervalId;
+    let startTime = 0;
+    let elapsedTime = 0;
+
+    function updateChrono() {
+        let now = Date.now();
+        let temps = now - startTime + elapsedTime;
+        hours = Math.floor(temps / 3600000);
+        minutes = Math.floor((temps % 3600000) / 60000);
+        seconds = Math.floor((temps % 60000) / 1000);
+        milliseconds = temps%1000
+        chrono.innerHTML = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(3, '0')}`;
+    }
+
+    const startButton = document.querySelector('.start');
+    const resetButton = document.querySelector('.reset');
+
+    startButton.addEventListener('click', () => {
+        isRunning = !isRunning;
+        if (isRunning){
+            startTime = Date.now();
+            let html = `<i class="fa-solid fa-pause"></i>`;
+            startButton.innerHTML = html;
+            intervalId = setInterval(updateChrono, 1);
+        }else{
+            elapsedTime += Date.now() - startTime;
+            let html = `<i class="fa-solid fa-play"></i>`;
+            startButton.innerHTML = html;
+            clearInterval(intervalId);
+        }
+    });
+
+    resetButton.addEventListener('click', () => {
+        clearInterval(intervalId)
+        elapsedTime = 0;
+        isRunning = false;
+        chrono.innerHTML = `00:00:00:000`;
+        startButton.innerHTML = `<i class="fa-solid fa-play"></i>`
+    });
+</script>
+</html>
