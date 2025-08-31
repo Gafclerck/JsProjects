@@ -15,4 +15,5 @@ def decode(s: str) -> str:
 
 # Exemple
 mot = "we(ke(fjfds)owe)"
-print(decode(mot))  # sortie attendue: "weewofdsfjke"
+print(decode(mot))  
+# sortie attendue: "weewofdsfjke"

@@ -3,86 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Cryptage</title>
 </head>
-    <style>
-        body{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .container{
-            width: 50%;
-            height: 60vh;
-            background-color: rgb(97, 73, 114);
-            border-radius: 5px;
-        }
-        .centrer{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .container2{
-            width: 80%;
-            gap: 1rem;
-        }
-        .contain{
-            min-width: 250px;
-            height: auto;
-            background-color: rgb(97, 73, 114);
-            box-shadow: 0px 5px 20px black;
-            padding: 1rem;
-            border-radius: 5px;
-            text-align: center;
-            color: white;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-        .contain h2{
-            margin: 0px;
-            font-weight: 200;
-        }
-
-        .contain h3{
-            color: rgb(24, 137, 50);
-        }
-        .boxnoir{
-            width: 100%;
-            background-color: black;
-            padding: 0.5rem;
-            margin: 0px;
-            justify-self: center;
-            border-radius: 5px;
-        }
-        .entrer{
-            width: 100%;
-            height: 30px;
-            border: none;
-            background-color: rgb(46, 43, 43);
-            color: white;
-        }
-
-
-        .codeBox{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .codeNumber{
-            width: 10%;
-            background: none;
-            color: white;
-        }
-        .code{
-            width: 80%;
-            height: 14px;
-            background-color: rgb(46, 43, 43);
-            border-radius: 5px;
-            color: white;
-        }
-    </style>
 <body>
     <div class="container centrer">
         <div class="contain centrer">
@@ -100,44 +24,4 @@
         </div>
     </div>
 </body>
-    <script>
-        let entrer = document.querySelector(".entrer")
-        let codeNumber = document.querySelector(".codeNumber")
-        let affichageZone = document.querySelector(".boxnoir h3")
-        let code = 1
-            
-        function chiffrer(input , code){
-            input = input.toLocaleLowerCase()
-            let output = []
-
-            for (let i = 0 ; i < input.length ; i++){
-                let char = input[i]
-                if (char >= 'a' && char <= 'z')
-                {
-                    let aCode = "a".charCodeAt(0)
-                    let charCode = input.charCodeAt(i) - aCode
-                    charCode = (charCode + code + 26)%26
-                    charCode += aCode
-                    output.push(String.fromCharCode(charCode))
-                }else{
-                    output.push(char)
-                }
-            }
-            return output.join("").toLocaleUpperCase()
-        }
-
-        function mettreAjourAffichage(){
-            let input = chiffrer(entrer.value , code)
-            affichageZone.textContent = input
-        }
-
-        codeNumber.addEventListener("input" , ()=>{
-            code = parseInt(codeNumber.value) || 1
-            mettreAjourAffichage()
-        })
-
-        entrer.addEventListener("input" , mettreAjourAffichage)
-
-        console.log(chiffrer("amadou" , 1))
-    </script>
 </html>

@@ -1,0 +1,157 @@
+body{
+    margin: 0px;
+    background-color: rgb(67, 67, 144);
+}
+
+header{
+    margin: auto;
+    color: rgb(31, 30, 30);
+}
+
+header h1{
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 40px;
+}
+
+header h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+.flex-c{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-r{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cadre{
+    width: 30%;
+    min-width: 250px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color:  rgb(155, 167, 167);
+    color: white;
+    border-radius: 30px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.347);
+}
+
+.ecran{
+    width: 90%;
+    padding: 10px;
+    height: 100px;
+    margin-top: 2em;
+    margin-bottom: 2rem;
+    background-color: rgb(40, 44, 44);
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.623);
+}
+
+.zoneOperation{
+    height: 60%;
+    width: 100%;
+    overflow: auto;
+    font-size: 1.6em;
+    font-weight: bold;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.zoneResultat{
+    height: 40%;
+    overflow: auto;
+    text-align: end;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.clavier{
+    width: 90%;
+    gap: 10px;
+    height: auto;
+}
+
+.clavier div{
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.chiffres , .operateurs{
+    display: grid;
+    height: 100%;
+    gap: 10px;
+}
+
+.chiffres{
+    width: 60%;
+    grid-template-columns: repeat(3 ,30%);
+}
+
+.operateurs{
+    width: 40%;
+    grid-template-columns: repeat(2 , 47%);
+}
+
+.chiffre , .operateur{
+    height: 70px;
+    max-height: 70px;
+    min-height: 50px;
+    text-align: center;
+    align-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: white;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+/* Effets au survol */
+.chiffres .chiffre:hover,
+.operateurs .operateur:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+}
+
+/* Effet au clic */
+.chiffres .chiffre:active,
+.operateurs .operateur:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
+}
+
+.chiffre{
+    background-color: rgb(52, 51, 51);
+}
+
+.operateur{
+    background-color: rgb(49, 32, 4);
+}
+
+
+
+footer{
+    background-color: rgb(31, 30, 30);
+    height: 100px;
+    width: 100%;
+    color: white;
+    bottom: 0px;
+    position: fixed;
+    bottom: 0px;
+    display: none;
+}
+
+
